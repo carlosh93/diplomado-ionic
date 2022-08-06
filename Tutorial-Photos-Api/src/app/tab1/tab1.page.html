@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Api example
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Ingrese su nombre</ion-label>
+    <ion-input #nombre></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Resultado</ion-label>
+    <p>{{result}}</p>
+  </ion-item>
+
+  <ion-button (click)="getResult(nombre)">Obtener</ion-button>
+</ion-content>

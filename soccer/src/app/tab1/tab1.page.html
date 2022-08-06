@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-searchbar placeholder="Filter Pizza"  (ionChange)="onSearchChange($event.detail.value)" [debounce]="250" showCancelButton="focus"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title class="ion-text-center">Añadir</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="agregar(equipo, n_jug, dec)" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-card>
+          <ion-card-content>
+            <ion-item>
+              <ion-label>Nombre equipo</ion-label>
+              <ion-input #equipo type="text" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Número Jugadores</ion-label>
+              <ion-input #n_jug type="number" ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-item>
+                <ion-textarea #dec placeholder="Descripción"></ion-textarea>
+              </ion-item>
+            </ion-item>
+          </ion-card-content>
+          </ion-card>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" id="open-modal">
+    <ion-fab-button>
+      <ion-icon name="add" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  
+
+  <ion-item *ngFor="let item of listafiltro">
+
+    <ion-card style="width: 100%;">
+      <ion-card-header>
+        <ion-card-subtitle>Equipo: {{item["n_jug"]}}</ion-card-subtitle>
+        <ion-card-title>Jugadores: {{item["nombre"]}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{item["dec"]}}
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
+  
+</ion-content>

@@ -4,7 +4,8 @@ import { Capacitor } from '@capacitor/core';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
 import { Platform } from '@ionic/angular';
-
+import {decode} from "base64-arraybuffer";
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class PhotoService {
   public photos: UserPhoto[] = [];
   private PHOTO_STORAGE: string = 'photos';
 
-  constructor(private platform: Platform) {}
+  constructor(private platform: Platform, private fbStorage: AngularFireStorage) {}
 
   public async loadSaved() {
     // Retrieve cached photo array data
@@ -37,6 +38,17 @@ export class PhotoService {
     }
   }
 
+  makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+      charactersLength));
+    }
+   return result;
+  }
+
   /* Use the device camera to take a photo:
   // https://capacitor.ionicframework.com/docs/apis/camera
 
@@ -54,6 +66,10 @@ export class PhotoService {
       quality: 100, // highest quality (0 to 100)
     });
 
+    const response = await fetch(capturedPhoto.webPath!);
+    const blobx = await response.blob();
+    
+    this.fbStorage.upload(this.makeid(5), blobx)
     const savedImageFile = await this.savePicture(capturedPhoto);
 
     // Add new photo to Photos array

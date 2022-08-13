@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1>Hola, {{this.user.name}}</h1>
+  <ion-button (click)="logout()" expand="block" fill="clear" shape="round">
+    Logout
+  </ion-button>
+</ion-content>

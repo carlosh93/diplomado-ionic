@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form #form1 (ngSubmit)="guardar(form1)">
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input type="text" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Descripción</ion-label>
+      <ion-input type="text" name="description"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Imagen</ion-label>
+      <ion-input type="text" name="image"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="block" fill="clear" shape="round">
+      Click me
+    </ion-button>
+  </form>
+</ion-content>

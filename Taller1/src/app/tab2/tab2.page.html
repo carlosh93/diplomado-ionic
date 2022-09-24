@@ -7,11 +7,14 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-item>
+    <ion-label position="floating">Buscar</ion-label>
+    <ion-input placeholder="Ingrese una letra para empezar a buscar" 
+    type="text" (ionChange)="updateFilterData()" [(ngModel)]="search" name="search"
+    (ionFocus)="updateData()"></ion-input>
+  </ion-item>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-item *ngFor="let item of filteredData;">
+    <ion-label>{{ item.nombre }} {{ item.apellido }}</ion-label>
+  </ion-item>
 </ion-content>

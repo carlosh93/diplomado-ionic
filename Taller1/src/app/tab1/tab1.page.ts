@@ -106,6 +106,8 @@ export class Tab1Page {
     this.shareDataService.saveData(this.registros)
 
     this.resetValues()
+
+    this.presentAlert("El registro fue creado correctamente!", "Registro Exitoso")
   }
 
 }

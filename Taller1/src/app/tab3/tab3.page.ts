@@ -11,7 +11,6 @@ import { AlertController } from '@ionic/angular';
 export class Tab3Page {
 
   data: any;
-  num: number= 1;
   constructor(private shareService: ShareDataService, private alertController: AlertController) {}
 
   ionViewWillEnter(){

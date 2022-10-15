@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { HttpToolsService } from '../services/http-tools.service';
 import { Observable } from 'rxjs';
 
-
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',

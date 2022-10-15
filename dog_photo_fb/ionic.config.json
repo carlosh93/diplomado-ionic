@@ -1,0 +1,7 @@
+{
+  "name": "dog_photo_fb",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
